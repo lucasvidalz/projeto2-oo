@@ -3,7 +3,8 @@ import openpyxl
 from openpyxl import Workbook
 from tkinter import messagebox
 import pathlib
-
+import pygame
+#sub classe de Person
 class ClientManagementSystem(Person):
     def __init__(self, name="", contact="", age="", address=""):
         super().__init__(name, contact, age, address)
@@ -43,6 +44,9 @@ class ClientManagementSystem(Person):
             folha = ficheiro.active
             folha.append([self.get_name(), self.get_contact(), self.get_age(), self.get_gender(), self.get_address(), self.get_obs()])
             ficheiro.save(r"Clientes.xlsx")
+            pygame.mixer.init()
+            pygame.mixer.music.load('res/sounds/dadossalvos.mp3')
+            pygame.mixer.music.play()
             messagebox.showinfo("Sistema", "Dados salvos com sucesso!")
         except Exception as e:
             messagebox.showerror("Erro", f"Ocorreu um erro ao salvar os dados: {e}")

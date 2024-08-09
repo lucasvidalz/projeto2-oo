@@ -1,6 +1,6 @@
 from tkinter import messagebox
 from models.client_management_system import ClientManagementSystem
-
+#classe de controle da entrada de dados, ela faz as verificações para a ClientManagement
 class FormController:
     def __init__(self):
         self.client_system = ClientManagementSystem()

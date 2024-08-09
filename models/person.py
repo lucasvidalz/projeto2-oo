@@ -1,3 +1,4 @@
+#classe base
 class Person:
     def __init__(self, name, contact, age, address):
         self.__name = name
