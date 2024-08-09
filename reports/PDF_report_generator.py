@@ -3,14 +3,14 @@ import pathlib
 from fpdf import FPDF
 from tkinter import messagebox
 import pygame  # Importando pygame
-
-class ReportGenerator:
+from reports.generate_report import ReportGenerator
+class PDFReportGenerator(ReportGenerator):
     def generate_report(self):
         try:
             ficheiro = pathlib.Path("Clientes.xlsx")
 
             if not ficheiro.exists():
-                messagebox.showerror("Erro", "É necessário cadastrar ao menos 1 usúario")
+                messagebox.showerror("Erro", "É necessário cadastrar ao menos 1 usuário")
                 return
 
             workbook = openpyxl.load_workbook('Clientes.xlsx')
@@ -38,7 +38,7 @@ class ReportGenerator:
             pdf.output('Relatório_de_Clientes.pdf')
             # Reproduzindo o áudio de sucesso
             pygame.mixer.init()
-            pygame.mixer.music.load('res/sounds/relatoriosucesso.mp3')
+            pygame.mixer.music.load('res/sounds/relatoriopdf.mp3')
             pygame.mixer.music.play()
             messagebox.showinfo("Sistema", "Relatório gerado com sucesso!")
         except Exception as e:
