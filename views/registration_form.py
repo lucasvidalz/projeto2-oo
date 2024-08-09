@@ -74,6 +74,10 @@ class RegistrationForm(ctk.CTk, ClientManagementSystem):
         
         btn_clear = ctk.CTkButton(self, text="Limpar Campos".upper(), command=self.clear, fg_color="#555", hover_color="#333")
         btn_clear.place(x=500, y=420)
+        
+        # Botão Voltar
+        btn_back = ctk.CTkButton(self, text="Voltar".upper(), command=self.back_to_main_menu, fg_color="#f55", hover_color="#c44")
+        btn_back.place(x=50, y=420)  # Posicione conforme a sua necessidade
 
     def submit(self):
         if not self.name_value.get() or not self.contact_value.get() or not self.age_value.get():
@@ -113,3 +117,10 @@ class RegistrationForm(ctk.CTk, ClientManagementSystem):
     def todo_sistema(self):
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("green")
+        
+    def back_to_main_menu(self):
+        self.withdraw()
+        from views.main_menu import MainMenu  # Mover o import para dentro do método
+        menu = MainMenu()
+        menu.mainloop()
+        self.destroy()

@@ -1,0 +1,8 @@
+import pygame  # Importando pygame
+
+
+pygame.mixer.init()
+pygame.mixer.music.load('res/sounds/relatoriosucesso.mp3')
+pygame.mixer.music.play()
+
+antes da mensagem

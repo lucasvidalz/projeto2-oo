@@ -2,6 +2,7 @@ import openpyxl
 import pathlib
 from fpdf import FPDF
 from tkinter import messagebox
+import pygame  # Importando pygame
 
 class ReportGenerator:
     def generate_report(self):
@@ -9,7 +10,7 @@ class ReportGenerator:
             ficheiro = pathlib.Path("Clientes.xlsx")
 
             if not ficheiro.exists():
-                messagebox.showerror("Erro", "O arquivo Clientes.xlsx não existe.")
+                messagebox.showerror("Erro", "É necessário cadastrar ao menos 1 usúario")
                 return
 
             workbook = openpyxl.load_workbook('Clientes.xlsx')
@@ -35,6 +36,10 @@ class ReportGenerator:
                 pdf.ln()
 
             pdf.output('Relatório_de_Clientes.pdf')
+            # Reproduzindo o áudio de sucesso
+            pygame.mixer.init()
+            pygame.mixer.music.load('res/sounds/relatoriosucesso.mp3')
+            pygame.mixer.music.play()
             messagebox.showinfo("Sistema", "Relatório gerado com sucesso!")
         except Exception as e:
             messagebox.showerror("Erro", f"Ocorreu um erro ao gerar o relatório: {e}")
