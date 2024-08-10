@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from tkinter import StringVar, END, messagebox
+
 from models.client_management_system import ClientManagementSystem
 
 class RegistrationForm(ctk.CTk, ClientManagementSystem):
@@ -10,6 +11,10 @@ class RegistrationForm(ctk.CTk, ClientManagementSystem):
         self.appearence()
         self.todo_sistema()
         self.create_widgets()
+
+        # atalhos de teclado ---
+        self.bind('<Control-s>', self.save_shortcut)  # Atalho para salvar dados
+        self.bind('<Control-l>', self.clear_shortcut)  # Atalho para limpar dados
 
     def layout_config(self):
         self.title("Sistema de Gestão de Clientes")
@@ -110,6 +115,12 @@ class RegistrationForm(ctk.CTk, ClientManagementSystem):
         self.address_entry.delete(0, END)
         self.gender_combobox.set("Masculino")
         self.obs_entry.delete("1.0", END)
+
+    def save_shortcut(self, event):  # Método acionado pelo atalho Ctrl+S
+        self.submit()
+
+    def clear_shortcut(self, event):  # Método acionado pelo atalho Ctrl+L
+        self.clear()   
 
     def change_apm(self, theme):
         ctk.set_appearance_mode(theme)

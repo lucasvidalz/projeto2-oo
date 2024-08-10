@@ -4,6 +4,7 @@ from fpdf import FPDF
 from tkinter import messagebox
 import pygame  # Importando pygame
 from reports.generate_report import ReportGenerator
+
 class PDFReportGenerator(ReportGenerator):
     def generate_report(self):
         try:

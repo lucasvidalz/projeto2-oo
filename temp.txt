@@ -1,8 +1,0 @@
-import pygame  # Importando pygame
-
-
-pygame.mixer.init()
-pygame.mixer.music.load('res/sounds/dadossalvos.mp3')
-pygame.mixer.music.play()
-
-antes da mensagem
